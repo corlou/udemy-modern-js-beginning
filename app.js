@@ -1,58 +1,33 @@
-// WINDOW METHODS / OBJECTS / PROPERTIES
+// Global Scope
 
+var a = 1;
+let b = 2;
+const c = 3;
 
-// Alert
-//alert("Hello World");
-
-// prompt
-// const input = prompt();
-// alert(input);
-
-// Confirm
-// if (confirm("Are you sure?")) {
-//     console.log("Yes");
-// } else {
-//     console.log("No");
+// function test() {
+//     var a = 4;
+//     let b = 5;
+//     const c = 6;
+//     console.log("Function Scope: ", a, b, c);
 // }
 
-let val;
+// test();
 
-// Outer height and width
-val = window.outerHeight;
-val = window.outerWidth;
-
-// Inner height and width
-val = window.innerHeight;
-val = window.innerWidth;
-
-// Scroll points
-val = window.scrollY;
-val = window.scrollX;
-
-// Location Object
-val = window.location;
-val = window.location.hostname;
-val = window.location.port;
-val = window.location.href;
-val = window.location.search;
-
-// Redirect
-// window.location.href = "http://google.com";
-// window.location.reload();
+// if (true) {
+//     //Block Scope
+//     var a = 4;
+//     let b = 5;
+//     const c = 6;
+//     console.log("If Scope: ", a, b, c);
+// }
 
 
-// History Object
-//window.history.length;
-
-// Navigator object
-val = window.navigator;
-val = window.navigator.appName;
-val = window.navigator.appVersion;
-val = window.navigator.userAgent;
-val = window.navigator.platform;
-val = window.navigator.vendor;
-val = window.navigator.language;
+// for (let a = 0; a, 10; a++) {
+//     console.log(`Loop: ${a}`);
+// }
 
 
 
-console.log(val);
+
+
+console.log("Global Scope: ", a, b, c);
