@@ -1,36 +1,43 @@
-// EVENT BUBBLING
+// SET LOCAL STORAGE ITEM
+// localStorage.setItem("name", "John");
+// localStorage.setItem("age", "30");
 
-// document.querySelector(".card-title").addEventListener("click", function () {
-//     console.log("card title");
-// });
+// SET SESSION STORAGE
+// sessionStorage.setItem("name", "Beth");
 
-// document.querySelector(".card-content").addEventListener("click", function () {
-//     console.log("card content");
-// });
+// REMOVE FROM STORAGE
+// localStorage.removeItem("name");
 
-// document.querySelector(".card").addEventListener("click", function () {
-//     console.log("card");
-// });
+// GET FROM STORAGE
+// const name = localStorage.getItem("name");
+// const age = localStorage.getItem("age");
 
-// document.querySelector(".col").addEventListener("click", function () {
-//     console.log("col");
-// });
+// CLEAR LOCAL STORAGE
+// localStorage.clear();
+// console.log(name, age);
 
-// EVENT DELEGATION
+document.querySelector("form").addEventListener("submit",
+    function (e) {
+        const task = document.getElementById("task").value;
 
-// const delItem = document.querySelector(".delete-item");
+        let tasks;
+        if (localStorage.getItem("tasks") === null) {
+            tasks = [];
+        } else {
+            tasks = JSON.parse(localStorage.getItem("tasks"));
+        }
 
-// delItem.addEventListener("click", deleteItem);
+        tasks.push(task);
 
-document.body.addEventListener("click", deleteItem);
+        localStorage.setItem("tasks", JSON.stringify(tasks));
+        alert("Task Saved");
 
-function deleteItem(e) {
-    // if (e.target.parentElement.className === "delete-item secondary-content") {
-    //     console.log("delete item");
-    // }
+        e.preventDefault();
+    });
 
-    if (e.target.parentElement.classList.contains("delete-item")) {
-        console.log("delete item");
-        e.target.parentElement.parentElement.remove();
-    }
-};
+const tasks = JSON.parse(localStorage.getItem("tasks"));
+
+tasks.forEach(function (task) {
+    console.log(task);
+
+});
