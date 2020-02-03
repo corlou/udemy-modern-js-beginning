@@ -1,50 +1,36 @@
-const form = document.querySelector("form");
-const taskInput = document.getElementById("task");
-const heading = document.querySelector("h5");
-const select = document.querySelector("select");
+// EVENT BUBBLING
 
-// Clear input
-taskInput.value = "";
+// document.querySelector(".card-title").addEventListener("click", function () {
+//     console.log("card title");
+// });
 
-//form.addEventListener("submit", runEvent);
+// document.querySelector(".card-content").addEventListener("click", function () {
+//     console.log("card content");
+// });
 
-// KEYDOWN
-//taskInput.addEventListener("keydown", runEvent);
+// document.querySelector(".card").addEventListener("click", function () {
+//     console.log("card");
+// });
 
-// KEYUP
-// taskInput.addEventListener("keyup", runEvent);
+// document.querySelector(".col").addEventListener("click", function () {
+//     console.log("col");
+// });
 
-// KEYPRESS
-//taskInput.addEventListener("keypress", runEvent);
+// EVENT DELEGATION
 
-// FOCUS
-//taskInput.addEventListener("focus", runEvent);
+// const delItem = document.querySelector(".delete-item");
 
-// BLUR
-//taskInput.addEventListener("blur", runEvent);
+// delItem.addEventListener("click", deleteItem);
 
-// CUT
-//taskInput.addEventListener("cut", runEvent);
+document.body.addEventListener("click", deleteItem);
 
-// PASTE
-//taskInput.addEventListener("paste", runEvent);
+function deleteItem(e) {
+    // if (e.target.parentElement.className === "delete-item secondary-content") {
+    //     console.log("delete item");
+    // }
 
-// INPUT
-taskInput.addEventListener("input", runEvent);
-
-// CHANGE EVENT
-select.addEventListener("change", runEvent);
-
-
-function runEvent(e) {
-    console.log(`EVENT TYPE: ${e.type}`);
-
-    //console.log(e.target.value);
-
-    //heading.innerText = e.target.value;
-
-    // GET INPUT VALUE
-    // console.log(taskInput.value);
-
-    // e.preventDefault();
-}
+    if (e.target.parentElement.classList.contains("delete-item")) {
+        console.log("delete item");
+        e.target.parentElement.parentElement.remove();
+    }
+};
