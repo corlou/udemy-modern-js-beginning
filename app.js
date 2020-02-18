@@ -1,24 +1,45 @@
-// Person constructor (constructors start with a capital)
-function Person(name, dob) {
-    this.name = name;
-    // this.age = age;
-    this.birthday = new Date(dob);
-    this.calculateAge = function () {
-        const diff = Date.now() - this.birthday.getTime();
-        const ageDate = new Date(diff);
-        return Math.abs(ageDate.getUTCFullYear() - 1970);
-    }
+// Object.prototype
+// Person.prototype
 
+// Person constructor
+function Person(firstName, lastName, dob) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.birthday = new Date(dob);
+    // this.calculateAge = function () {
+    //     const diff = Date.now() - this.birthday.getTime();
+    //     const ageDate = new Date(diff);
+    //     return Math.abs(ageDate.getUTCFullYear() - 1979);
+    // }
 }
 
+// Calculate age
+Person.prototype.calculateAge = function () {
+    const diff = Date.now() - this.birthday.getTime();
+    const ageDate = new Date(diff);
+    return Math.abs(ageDate.getUTCFullYear() - 1970);
+}
 
-// const brad = new Person('Brad', 36);
-// const john = new Person('John', 30);
+// Get full name
+Person.prototype.getFullName = function () {
+    return `${this.firstName} ${this.lastName}`;
+}
 
-// console.log(john.age);  
+// Gets married
+Person.prototype.getsMarried = function (newLastName) {
+    this.lastName = newLastName;
+};
 
-const brad = new Person('Brad', '9-10-1981');
-console.log(brad.calculateAge());
+const john = new Person('John', 'Smith', '8-12-90');
+const mary = new Person('Mary', 'Johnson', 'March 20 1978');
 
-// this refers to the current instance of the object
-// A method is a function that is inside an object
+console.log(mary);
+console.log(john.calculateAge());
+
+console.log(mary.getFullName);
+
+mary.getsMarried('Smith');
+
+console.log(mary.getFullName);
+
+console.log(mary.hasOwnProperty('firstName'));
