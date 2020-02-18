@@ -1,43 +1,24 @@
-// SET LOCAL STORAGE ITEM
-// localStorage.setItem("name", "John");
-// localStorage.setItem("age", "30");
+// Person constructor (constructors start with a capital)
+function Person(name, dob) {
+    this.name = name;
+    // this.age = age;
+    this.birthday = new Date(dob);
+    this.calculateAge = function () {
+        const diff = Date.now() - this.birthday.getTime();
+        const ageDate = new Date(diff);
+        return Math.abs(ageDate.getUTCFullYear() - 1970);
+    }
 
-// SET SESSION STORAGE
-// sessionStorage.setItem("name", "Beth");
+}
 
-// REMOVE FROM STORAGE
-// localStorage.removeItem("name");
 
-// GET FROM STORAGE
-// const name = localStorage.getItem("name");
-// const age = localStorage.getItem("age");
+// const brad = new Person('Brad', 36);
+// const john = new Person('John', 30);
 
-// CLEAR LOCAL STORAGE
-// localStorage.clear();
-// console.log(name, age);
+// console.log(john.age);  
 
-document.querySelector("form").addEventListener("submit",
-    function (e) {
-        const task = document.getElementById("task").value;
+const brad = new Person('Brad', '9-10-1981');
+console.log(brad.calculateAge());
 
-        let tasks;
-        if (localStorage.getItem("tasks") === null) {
-            tasks = [];
-        } else {
-            tasks = JSON.parse(localStorage.getItem("tasks"));
-        }
-
-        tasks.push(task);
-
-        localStorage.setItem("tasks", JSON.stringify(tasks));
-        alert("Task Saved");
-
-        e.preventDefault();
-    });
-
-const tasks = JSON.parse(localStorage.getItem("tasks"));
-
-tasks.forEach(function (task) {
-    console.log(task);
-
-});
+// this refers to the current instance of the object
+// A method is a function that is inside an object
